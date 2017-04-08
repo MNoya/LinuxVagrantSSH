@@ -1,0 +1,9 @@
+Host vm01
+    HostName 10.0.0.11
+    Port 222
+    User ucu
+
+Host vm02
+    HostName 10.0.0.12
+    Port 222
+    User ucu
