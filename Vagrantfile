@@ -1,5 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
+# Martin Noya
+# Ferdinand Vonrtoz
 
 required_plugins = %w( vagrant-cachier )
 required_plugins.each do |plugin|
