@@ -18,14 +18,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.define "vm0#{n}" do |srv|
         srv.vm.box ="ubuntu/trusty64"
         srv.vm.hostname = "vm0#{n}"
-        srv.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
+        srv.vm.network "private_network", ip: "10.0.0.1#{n}"
     end
   end
 
   # Provision 
-  config.vm.provision "shell", inline: <<-SHELL
-    echo "Vagrant provision at $(date +%F-%H.%M.%S)" > /tmp/created
-  SHELL
+  config.vm.provision "shell", run: "always", inline: <<-SHELL
 
+  SHELL
+  #cp -rf /vagrant/.vagrant/machines/vm01/virtualbox/ssh_config /etc/ssh/ssh_config
+  #cp -rf /vagrant/.vagrant/machines/vm01/virtualbox/sshd_config /etc/ssh/sshd_config
+  #service ssh restart
 end
 
