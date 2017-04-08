@@ -25,16 +25,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Provision 
   config.vm.provision "shell", inline: <<-SHELL
     useradd ucu
-    ssh-keygen -b 1024 -f ucu -t dsa
-    sudo mkdir -p /home/ucu/.ssh
-    cat ucu.pub | sudo tee -a /home/ucu/.ssh/authorized_keys 
-    sudo chmod 600 /home/ucu/.ssh/authorized_keys
-    sudo chmod 700 /home/ucu/.ssh
-    sudo chown -R ucu /home/ucu 
-
-    cp -rf /vagrant/ssh_config /etc/ssh/ssh_config
-    cp -rf /vagrant/sshd_config /etc/ssh/sshd_config
-
+    mkdir -p /home/ucu/.ssh
+    cp /vagrant/id_rsa /home/ucu/.ssh/id_rsa
+    cp /vagrant/id_rsa.pub /home/ucu/.ssh/id_rsa.pub
+    cp /vagrant/id_rsa.pub /home/ucu/.ssh/authorized_keys  
+    chmod 600 /home/ubuntu/.ssh/authorized_keys
+    chmod 600 /home/ucu/.ssh/id_rsa.pub
+    chmod 700 /home/ucu/.ssh
+    chown -R ucu /home/ucu 
+    cp /vagrant/ssh_config /etc/ssh/ssh_config
+    cp /vagrant/sshd_config /etc/ssh/sshd_config
     service ssh restart
   SHELL
 end
