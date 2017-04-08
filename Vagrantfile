@@ -30,6 +30,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     cp /vagrant/id_rsa.pub /home/ucu/.ssh/id_rsa.pub
     cp /vagrant/id_rsa.pub /home/ucu/.ssh/authorized_keys  
     chmod 600 /home/ubuntu/.ssh/authorized_keys
+    chmod 600 /home/ucu/.ssh/id_rsa
     chmod 600 /home/ucu/.ssh/id_rsa.pub
     chmod 700 /home/ucu/.ssh
     chown -R ucu /home/ucu 
